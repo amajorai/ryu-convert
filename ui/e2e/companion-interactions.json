@@ -1,0 +1,504 @@
+{
+  "version": 1,
+  "package": "convert",
+  "scope": "complete",
+  "expectedRows": 37,
+  "selector": {
+    "spec": "e2e/convert-companion.spec.ts",
+    "config": "e2e/convert-companion.playwright.config.ts"
+  },
+  "evidenceBoundary": "Convert runs inside the manifest-granted ExtensionHost in Chromium. A local deterministic host implements only storage, toast, and download observation; tests use synthetic SVG, JSON, PDF, Markdown, and WAV fixtures and inspect the actual downloaded bytes, ZIP entries, PDF pages/text/rotation, and image dimensions/pixels. No hosted converter, customer file, external model/provider, or live service is used. FileChooser tests exercise the browser file input path; they do not prove a native operating-system picker. AVIF output is conditional on browser codec support, and other format fidelity remains limited to the local adapters exercised by these fixtures.",
+  "assertions": [
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App.tsx",
+        "line": "373",
+        "component": "App",
+        "tag": "Button",
+        "events": "onClick"
+      },
+      "testTitle": "adds files, downloads a real batch archive, removes one row, and clears the queue",
+      "assertionName": "Download all creates a ZIP whose entries and payloads equal the completed queue outputs.",
+      "assertionMarker": "Download all creates an archive whose entries and payloads match the completed queue."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App.tsx",
+        "line": "398",
+        "component": "App",
+        "tag": "Tabs",
+        "events": "onValueChange"
+      },
+      "testTitle": "preview tabs navigate Convert, History, Formats, and Tools, including the empty-history action",
+      "assertionName": "Changing preview tabs renders the matching view for each tab value.",
+      "assertionMarker": "Preview tab changes render their matching Convert, History, Formats, and Tools views."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App.tsx",
+        "line": "412",
+        "component": "App",
+        "tag": "TabsTrigger",
+        "events": ""
+      },
+      "testTitle": "preview tabs navigate Convert, History, Formats, and Tools, including the empty-history action",
+      "assertionName": "The Convert trigger restores the file workspace after navigating away.",
+      "assertionMarker": "The Convert tab returns to the file workspace after other views."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App.tsx",
+        "line": "416",
+        "component": "App",
+        "tag": "TabsTrigger",
+        "events": ""
+      },
+      "testTitle": "preview tabs navigate Convert, History, Formats, and Tools, including the empty-history action",
+      "assertionName": "The History trigger renders saved history and its actionable empty state.",
+      "assertionMarker": "History shows empty state and Start with a file above returns to Convert."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App.tsx",
+        "line": "420",
+        "component": "App",
+        "tag": "TabsTrigger",
+        "events": ""
+      },
+      "testTitle": "preview tabs navigate Convert, History, Formats, and Tools, including the empty-history action",
+      "assertionName": "The Formats trigger renders the available format catalog.",
+      "assertionMarker": "Preview tab changes render their matching Convert, History, Formats, and Tools views."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App.tsx",
+        "line": "424",
+        "component": "App",
+        "tag": "TabsTrigger",
+        "events": ""
+      },
+      "testTitle": "preview tabs navigate Convert, History, Formats, and Tools, including the empty-history action",
+      "assertionName": "The Tools trigger renders the local PDF and image tools.",
+      "assertionMarker": "Preview tab changes render their matching Convert, History, Formats, and Tools views."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "76",
+        "component": "ConvertWorkspace",
+        "tag": "input",
+        "events": "onChange"
+      },
+      "testTitle": "converts and downloads a resized image, then persists output history in ExtensionHost storage",
+      "assertionName": "Selecting a local SVG queues the exact source and converts it to a decodable JPEG.",
+      "assertionMarker": "The batch file input accepts a local SVG and emits an actual JPEG download."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "108",
+        "component": "ConvertWorkspace",
+        "tag": "Button",
+        "events": "onClick"
+      },
+      "testTitle": "merges selected PDF inputs and downloads a valid combined document",
+      "assertionName": "Download combined.pdf saves a valid PDF with both selected pages.",
+      "assertionMarker": "Download combined.pdf returns the merged PDF from the selected inputs."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "117",
+        "component": "ConvertWorkspace",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Merge PDFs"
+      },
+      "testTitle": "merges selected PDF inputs and downloads a valid combined document",
+      "assertionName": "Merge PDFs combines the exact selected PDF inputs into a two-page result.",
+      "assertionMarker": "Merge PDFs combines two local input files into a two-page combined PDF."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "127",
+        "component": "ConvertWorkspace",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Add files"
+      },
+      "testTitle": "adds files, downloads a real batch archive, removes one row, and clears the queue",
+      "assertionName": "Add files opens a browser chooser and appends the selected second source file.",
+      "assertionMarker": "Add files opens the browser file chooser and queues the selected source unchanged."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "168",
+        "component": "ConvertWorkspace",
+        "tag": "RyuAppForm",
+        "events": "onSubmit"
+      },
+      "testTitle": "converts and downloads a resized image, then persists output history in ExtensionHost storage",
+      "assertionName": "Submitting the conversion form converts the queued item, downloads its result, and records history metadata.",
+      "assertionMarker": "The conversion form processes the queued file and exposes the real result download."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "179",
+        "component": "ConvertWorkspace",
+        "tag": "Slider",
+        "events": "onValueChange"
+      },
+      "testTitle": "converts and downloads a resized image, then persists output history in ExtensionHost storage",
+      "assertionName": "The quality slider updates the displayed percentage and changes the encoded result size.",
+      "assertionMarker": "Image quality control changes the rendered percentage and affects the downloaded bytes."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "199",
+        "component": "ConvertWorkspace",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "converts and downloads a resized image, then persists output history in ExtensionHost storage",
+      "assertionName": "Max image width is applied to the converted image dimensions.",
+      "assertionMarker": "Max image width control constrains the converted bitmap output."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "220",
+        "component": "ConvertWorkspace",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Clear batch"
+      },
+      "testTitle": "adds files, downloads a real batch archive, removes one row, and clears the queue",
+      "assertionName": "Clear batch removes the remaining queue record and renders the empty workspace.",
+      "assertionMarker": "Clear batch restores the empty state and keeps source inputs untouched."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-convert-workspace.tsx",
+        "line": "223",
+        "component": "ConvertWorkspace",
+        "tag": "Button",
+        "events": ""
+      },
+      "testTitle": "a failed structured conversion stays visible and succeeds after choosing a valid output",
+      "assertionName": "Convert batch retries the corrected queued source and produces its JSON download.",
+      "assertionMarker": "Selecting a valid queue output after a failed conversion retries the same source file."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-queue-row.tsx",
+        "line": "74",
+        "component": "QueueRow",
+        "tag": "NativeSelect",
+        "events": "onChange"
+      },
+      "testTitle": "a failed structured conversion stays visible and succeeds after choosing a valid output",
+      "assertionName": "The row output selector changes from an invalid CSV conversion to a successful JSON retry.",
+      "assertionMarker": "Selecting a valid queue output after a failed conversion retries the same source file."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-queue-row.tsx",
+        "line": "102",
+        "component": "QueueRow",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Download"
+      },
+      "testTitle": "converts and downloads a resized image, then persists output history in ExtensionHost storage",
+      "assertionName": "The queued result Download button saves the actual converted file and validates its JPEG signature and dimensions.",
+      "assertionMarker": "Queue row Download saves the actual converted image with the expected filename and bytes."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-queue-row.tsx",
+        "line": "111",
+        "component": "QueueRow",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "×"
+      },
+      "testTitle": "adds files, downloads a real batch archive, removes one row, and clears the queue",
+      "assertionName": "Remove deletes only the chosen notes.md row while retaining people.json.",
+      "assertionMarker": "Remove removes only the selected queue row."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/App-history-view.tsx",
+        "line": "44",
+        "component": "HistoryView",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Start with a file above"
+      },
+      "testTitle": "preview tabs navigate Convert, History, Formats, and Tools, including the empty-history action",
+      "assertionName": "The empty-history action returns the preview to Convert and its file workspace.",
+      "assertionMarker": "History shows empty state and Start with a file above returns to Convert."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "153",
+        "component": "ToolsView",
+        "tag": "ToolFilePicker",
+        "events": "onChange"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "Choose PDF selects the local three-page PDF and exposes its metadata in the tool card.",
+      "assertionMarker": "Choose PDF selects the local three-page PDF and exposes its metadata in the tool card."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "160",
+        "component": "ToolsView",
+        "tag": "NativeSelect",
+        "events": "onChange"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "The operation selector runs extract, compress, split, rotate, page numbers, and watermark operations on the fixture.",
+      "assertionMarker": "PDF operation selector exposes and executes every supported local operation."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "189",
+        "component": "ToolsView",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "The page range input rejects page 9 and accepts pages 1 and 3 for recovery.",
+      "assertionMarker": "Extract pages input validates an out-of-range request and recovers after correction."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "198",
+        "component": "ToolsView",
+        "tag": "NativeSelect",
+        "events": "onChange"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "The PDF rotation selector produces PDFs whose page rotation matches each selected degree value.",
+      "assertionMarker": "PDF rotation selector persists selected degrees in the downloaded document."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "215",
+        "component": "ToolsView",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "The watermark field's text appears in the extracted PDF output text.",
+      "assertionMarker": "PDF watermark input inserts exact user text into the output PDF."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "223",
+        "component": "ToolsView",
+        "tag": "Button",
+        "events": "onClick"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "Run PDF tool surfaces invalid input, keeps the selected file, and succeeds after correction.",
+      "assertionMarker": "Run PDF tool produces validated local output and an inline retry error."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "231",
+        "component": "ToolsView",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Download"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "The PDF tool Download button saves the generated operation result with the expected filename and valid PDF/ZIP contents.",
+      "assertionMarker": "Download PDF tool saves the result filename and valid bytes."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "247",
+        "component": "ToolsView",
+        "tag": "ToolFilePicker",
+        "events": "onChange"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Choose image selects the local SVG and renders its name in the Image lab.",
+      "assertionMarker": "Choose image selects the exact local image fixture without contacting a remote converter."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "255",
+        "component": "ToolsView",
+        "tag": "NativeSelect",
+        "events": "onChange"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Image output selection changes the real encoded result between PNG, WebP, PDF, AVIF, and JPEG.",
+      "assertionMarker": "Image output selector chooses the generated file extension and output container."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "272",
+        "component": "ToolsView",
+        "tag": "NativeSelect",
+        "events": "onChange"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Image rotation selection produces the matching output dimensions for 0, 90, 180, and 270 degrees.",
+      "assertionMarker": "Image rotation selector changes the downloaded bitmap orientation."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "291",
+        "component": "ToolsView",
+        "tag": "Input",
+        "events": "onChange",
+        "label_or_destination": "Original"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Max width is bounded and reflected by the downloaded image dimensions.",
+      "assertionMarker": "Max width and crop controls select a bounded pixel rectangle for conversion."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "303",
+        "component": "ToolsView",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "The numeric image quality field changes JPEG output size for the same fixture.",
+      "assertionMarker": "Quality input changes output bytes while preserving the converted dimensions."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "320",
+        "component": "ToolsView",
+        "tag": "Input",
+        "events": "onChange"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Crop coordinates select the fixture's exact pixel rectangle and the output dimensions match.",
+      "assertionMarker": "Max width and crop controls select a bounded pixel rectangle for conversion."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "338",
+        "component": "ToolsView",
+        "tag": "Input",
+        "events": "onChange",
+        "label_or_destination": "Optional text"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Adding watermark text changes the rendered pixels compared with the unwatermarked source.",
+      "assertionMarker": "Image watermark input changes the rendered output pixels."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "345",
+        "component": "ToolsView",
+        "tag": "Button",
+        "events": "onClick"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Run image tool applies each selected local image operation and exposes its result.",
+      "assertionMarker": "Run image tool produces the selected local output."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "353",
+        "component": "ToolsView",
+        "tag": "Button",
+        "events": "onClick",
+        "label_or_destination": "Download"
+      },
+      "testTitle": "image tools apply crop, rotation, width, watermark, output, and quality settings",
+      "assertionName": "Download saves the image-tool output and its signature, dimensions, and pixel fingerprint are validated.",
+      "assertionMarker": "Download image tool saves the generated file with the correct name and dimensions."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "425",
+        "component": "ToolFilePicker",
+        "tag": "input",
+        "events": "onChange"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "The shared hidden file input receives the selected PDF bytes through the extension-host file selection path.",
+      "assertionMarker": "The hidden PDF file input selects fixture.pdf and renders its summary."
+    },
+    {
+      "row": {
+        "package": "convert",
+        "source_file": "apps-store/convert/ui/src/ToolsView.tsx",
+        "line": "437",
+        "component": "ToolFilePicker",
+        "tag": "Button",
+        "events": "onClick"
+      },
+      "testTitle": "PDF tools apply operations, validate page ranges, and recover on retry",
+      "assertionName": "Choose PDF activates a browser file chooser and selects the local PDF fixture.",
+      "assertionMarker": "Choose PDF opens a browser file chooser and selects the local PDF fixture."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ryu.convert",
+  "version": "0.1.0",
+  "description": "A local-only conversion studio for image output and editing, PDF organization and page rendering, text and structured data, readable DOCX input, ZIP manifest inspection and batch bundles, and Mediabunny browser media conversion. It covers resize, crop, rotate, watermark, split, extract, page numbers, compression, PDF-to-image pages, and MP4/MOV/MKV/WebM/WAV/MP3/Ogg/FLAC/AAC/M4A output without an upload service, Docker dependency, or required sidecar; engine-dependent formats stay input-only.",
+  "author": {
+    "name": "Ryu",
+    "url": "https://ryuhq.com"
+  },
+  "homepage": "https://github.com/amajorai/ryu-convert",
+  "repository": "https://github.com/amajorai/ryu-convert",
+  "keywords": [
+    "convert",
+    "converter",
+    "file conversion",
+    "image",
+    "pdf",
+    "documents",
+    "media",
+    "local"
+  ],
+  "extensions": {
+    "com.ryuhq.ryu": {
+      "id": "@ryu/convert",
+      "displayName": "Convert"
+    }
+  }
+}
